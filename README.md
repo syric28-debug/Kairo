@@ -48,15 +48,19 @@ KAIRO eliminates these headaches by providing a clean **Black + White + Transpar
 
 ## Download
 
-KAIRO is distributed as standalone, self-contained Windows NSIS installers for both 64-bit and 32-bit architectures:
+KAIRO is distributed as standalone, self-contained Windows NSIS installers for both 64-bit and 32-bit architectures.
+
+> **Download links:** The official GitHub Release for `v1.0.0` is being finalized. Once published at [github.com/syric28-debug/Kairo/releases](https://github.com/syric28-debug/Kairo/releases), the direct installer download links will be activated on this page. Until then, use the installer files bundled with this repository (`installers/` folder).
 
 ### Windows 64-bit
 - **File:** `installers/KAIRO-Setup-1.0.0-x64.exe`
+- **Release asset name (v1.0.0):** `KAIRO-Setup-1.0.0-x64.exe`
 - **Architecture:** `x86_64` (64-bit Windows)
 - **Description:** Optimized for all standard modern 64-bit Windows installations.
 
 ### Windows 32-bit
 - **File:** `installers/KAIRO-Setup-1.0.0-x86.exe`
+- **Release asset name (v1.0.0):** `KAIRO-Setup-1.0.0-x86.exe`
 - **Architecture:** `i686` (32-bit Windows)
 - **Description:** Built for legacy 32-bit Windows installations or specialized environments.
 
@@ -79,8 +83,7 @@ Installing KAIRO is fast, lightweight, and requires no administrative privileges
 4. The installer automatically registers a Start Menu shortcut (`KAIRO`) and includes a clean uninstaller.
 
 > **Screenshot — KAIRO installer**
->
-> ![KAIRO Installer](docs/screenshots/installer.png)
+<!-- Screenshot placeholder: docs/screenshots/01-installer.png -->
 
 ---
 
@@ -97,8 +100,7 @@ If no services have been configured yet, you will see an empty-state dashboard i
 - A notification prompting you to add your first service.
 
 > **Screenshot — First Launch Empty State**
->
-> ![KAIRO First Launch](docs/screenshots/01-first-launch.png)
+<!-- Screenshot placeholder: docs/screenshots/02-first-launch.png -->
 
 ---
 
@@ -121,8 +123,7 @@ The KAIRO Dashboard acts as the primary cockpit for your local environment:
 - **Recent Services Table:** Displays quick Start/Stop controls, configured ports, and command pills for recent services.
 
 > **Screenshot — Dashboard**
->
-> ![KAIRO Dashboard](docs/screenshots/02-dashboard.png)
+<!-- Screenshot placeholder: docs/screenshots/03-dashboard.png -->
 
 ---
 
@@ -131,8 +132,7 @@ The KAIRO Dashboard acts as the primary cockpit for your local environment:
 To register a new local background service in KAIRO, click the **`+ Add Service`** button in the top header. This opens the **Add Generic Service** modal dialog.
 
 > **Screenshot — Add Service Modal**
->
-> ![KAIRO Add Service Modal](docs/screenshots/03-add-service.png)
+<!-- Screenshot placeholder: docs/screenshots/04-add-service.png -->
 
 ### Configuration Fields Explained
 
@@ -152,8 +152,7 @@ Fill out the configuration parameters according to your service needs:
 Click **Create Service** to persist the configuration.
 
 > **Screenshot — Configured Service Form**
->
-> ![KAIRO Service Configuration](docs/screenshots/04-service-configuration.png)
+<!-- Screenshot placeholder: docs/screenshots/04-add-service.png -->
 
 ---
 
@@ -179,12 +178,10 @@ When starting, KAIRO transitions through the following lifecycle states:
 6. **Failed:** The executable failed to launch (e.g., path not found) or terminated unexpectedly with an error code.
 
 > **Screenshot — Service Running with Metrics**
->
-> ![KAIRO Service Running](docs/screenshots/05-service-running.png)
+<!-- Screenshot placeholder: docs/screenshots/05-service-running.png -->
 
 > **Screenshot — Service Port Ready**
->
-> ![KAIRO Service Ready](docs/screenshots/06-service-ready.png)
+<!-- Screenshot placeholder: docs/screenshots/06-service-ready.png -->
 
 ---
 
@@ -198,8 +195,7 @@ To shut down an active service:
 4. The PID is released, the metrics bar is removed, and the card status returns to **`stopped`**.
 
 > **Screenshot — Service Stopped**
->
-> ![KAIRO Service Stopped](docs/screenshots/07-service-stopped.png)
+<!-- Screenshot placeholder: docs/screenshots/07-service-stopped.png -->
 
 ---
 
@@ -213,8 +209,7 @@ Clicking the **`Restart` (⟳)** button performs a clean cycle:
 5. Telemetry counters reset, and port readiness probing begins anew.
 
 > **Screenshot — Service Restarted**
->
-> ![KAIRO Service Restarted](docs/screenshots/08-service-restarted.png)
+<!-- Screenshot placeholder: docs/screenshots/08-service-restarted.png -->
 
 ---
 
@@ -227,8 +222,7 @@ Unlike basic task managers that simply check whether a process exists in memory,
 - **Stale Probe Rejection:** If a service restarts rapidly, probe results targeted at the previous PID are safely discarded, preventing race conditions.
 
 > **Screenshot — Port Readiness Probing**
->
-> ![KAIRO Port Readiness](docs/screenshots/09-port-readiness.png)
+<!-- Screenshot placeholder: docs/screenshots/09-port-readiness.png -->
 
 ---
 
@@ -242,8 +236,7 @@ KAIRO provides a two-layer startup architecture:
    Master toggle in **Settings**. When enabled, KAIRO iterates through all configured services and automatically launches any service where `Auto-start on application launch` is checked.
 
 > **Screenshot — Auto Start Settings & Startup Banner**
->
-> ![KAIRO Auto Start](docs/screenshots/10-auto-start.png)
+<!-- Screenshot placeholder: docs/screenshots/10-auto-start.png -->
 
 ---
 
@@ -256,8 +249,7 @@ When `Auto-restart if process terminates unexpectedly` is enabled on a service:
 - **Crash Loop Protection:** If a faulty binary crashes repeatedly, KAIRO limits auto-restarts to a maximum of **3 consecutive attempts within a 30-second window**. If exceeded, the service is suspended in a `Failed` state to safeguard system CPU and disk resources. Running stably for 10 seconds resets the consecutive attempt counter.
 
 > **Screenshot — Auto Restart Protection**
->
-> ![KAIRO Auto Restart](docs/screenshots/11-auto-restart.png)
+<!-- Screenshot placeholder: docs/screenshots/11-auto-restart.png -->
 
 ---
 
@@ -276,8 +268,7 @@ KAIRO integrates directly with the Windows Taskbar Notification Area (System Tra
   Clicking the window titlebar close button (**✕**) hides the window to the System Tray; your background services continue running uninterrupted. To terminate KAIRO entirely, select **Exit** from the System Tray menu.
 
 > **Screenshot — System Tray Menu**
->
-> ![KAIRO System Tray](docs/screenshots/12-system-tray.png)
+<!-- Screenshot placeholder: docs/screenshots/12-system-tray.png -->
 
 ---
 
@@ -295,8 +286,7 @@ Navigate to the **`Logs` ()** tab in the sidebar for real-time terminal outpu
   - **Smart Scroll:** Auto-scrolls to the newest log line; scrolling up automatically pauses auto-scroll so you can inspect error traces comfortably.
 
 > **Screenshot — Real-Time Log Viewer**
->
-> ![KAIRO Logs](docs/screenshots/13-logs.png)
+<!-- Screenshot placeholder: docs/screenshots/13-logs.png -->
 
 ---
 
@@ -316,8 +306,7 @@ The **`Settings` (⚙)** tab provides full control over application preferences 
    - Displays compiled version (`1.0.0`), application identifier (`com.kairo.localruntimemanager`), platform target, and technology stack.
 
 > **Screenshot — Settings View**
->
-> ![KAIRO Settings](docs/screenshots/14-settings.png)
+<!-- Screenshot placeholder: docs/screenshots/14-settings.png -->
 
 ---
 
@@ -331,8 +320,7 @@ To adjust an existing service's configuration:
 5. *Note:* If the service is currently running, changes will take effect upon the next restart.
 
 > **Screenshot — Editing a Service**
->
-> ![KAIRO Edit Service](docs/screenshots/15-edit-service.png)
+<!-- Screenshot placeholder: docs/screenshots/15-edit-service.png -->
 
 ---
 
@@ -345,8 +333,7 @@ To permanently delete a service configuration:
 4. Confirm by clicking **Delete Service**. The configuration is permanently removed from disk storage.
 
 > **Screenshot — Delete Confirmation Modal**
->
-> ![KAIRO Delete Service](docs/screenshots/16-delete-service.png)
+<!-- Screenshot placeholder: docs/screenshots/16-delete-service.png -->
 
 ---
 
@@ -402,8 +389,7 @@ To remove KAIRO completely from your Windows system:
 5. The uninstaller cleanly removes all application binaries, desktop shortcuts, and Start Menu entries.
 
 > **Screenshot — Windows Uninstall**
->
-> ![KAIRO Uninstall](docs/screenshots/17-uninstall.png)
+<!-- Screenshot placeholder: docs/screenshots/17-uninstall.png -->
 
 ---
 
