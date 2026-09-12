@@ -48,25 +48,30 @@ KAIRO eliminates these headaches by providing a clean **Black + White + Transpar
 
 ## Download
 
-KAIRO is distributed as standalone, self-contained Windows NSIS installers for both 64-bit and 32-bit architectures.
-
-> **Download links:** The official GitHub Release for `v1.0.0` is being finalized. Once published at [github.com/syric28-debug/Kairo/releases](https://github.com/syric28-debug/Kairo/releases), the direct installer download links will be activated on this page. Until then, use the installer files bundled with this repository (`installers/` folder).
+Choose the installer that matches your Windows system.
 
 ### Windows 64-bit
-- **File:** `installers/KAIRO-Setup-1.0.0-x64.exe`
-- **Release asset name (v1.0.0):** `KAIRO-Setup-1.0.0-x64.exe`
-- **Architecture:** `x86_64` (64-bit Windows)
-- **Description:** Optimized for all standard modern 64-bit Windows installations.
+
+[Download KAIRO for Windows x64](https://github.com/syric28-debug/Kairo/releases/download/v1.0.0/KAIRO-Setup-1.0.0-x64.exe)
+
+For modern 64-bit Windows systems.
 
 ### Windows 32-bit
-- **File:** `installers/KAIRO-Setup-1.0.0-x86.exe`
-- **Release asset name (v1.0.0):** `KAIRO-Setup-1.0.0-x86.exe`
-- **Architecture:** `i686` (32-bit Windows)
-- **Description:** Built for legacy 32-bit Windows installations or specialized environments.
 
-> **Note on Architectures:**  
-> - **x64** refers to 64-bit Windows (the vast majority of modern PCs).  
-> - **x86** refers to 32-bit Windows. If you are unsure which version your system runs, open Windows **Settings → System → About** and check the "System type" field.
+[Download KAIRO for Windows x86](https://github.com/syric28-debug/Kairo/releases/download/v1.0.0/KAIRO-Setup-1.0.0-x86.exe)
+
+For 32-bit Windows systems.
+
+### Which version do I need?
+
+- **x64** = 64-bit Windows
+- **x86** = 32-bit Windows
+
+To check:
+
+Windows **Settings → System → About → System type**
+
+[View all KAIRO releases](https://github.com/syric28-debug/Kairo/releases)
 
 ---
 
