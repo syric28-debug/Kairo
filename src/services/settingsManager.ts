@@ -34,6 +34,14 @@ export async function setServiceAutoStart(
 }
 
 /**
+ * Phase 12: enables or disables automatic update checks on startup.
+ * Returns the updated settings.
+ */
+export async function setUpdateAutoCheck(enabled: boolean): Promise<AppSettings> {
+  return invoke<AppSettings>("set_update_auto_check", { enabled });
+}
+
+/**
  * Subscribes to `startup-progress` events emitted during service auto-start.
  * Returns an unlisten function to clean up the listener.
  */

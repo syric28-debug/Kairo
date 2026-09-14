@@ -35,6 +35,12 @@ export interface ServiceConfig {
   autoStart: boolean;
   autoRestart: boolean;
   healthCheck?: string | null;
+  /** Optional user-defined API base path appended to the local base URL (e.g. "/v1"). */
+  apiBasePath?: string | null;
+  /** Optional user-defined direct-link path appended to the local base URL (e.g. "/"). */
+  directUrlPath?: string | null;
+  /** Optional user-defined health-check path appended to the local base URL (e.g. "/health"). */
+  healthCheckPath?: string | null;
   createdAt: string;
   updatedAt: string;
 }
@@ -65,6 +71,8 @@ export type StatusFilter = "all" | "running" | "stopped" | "failed";
 export interface AppSettings {
   appAutoStart: boolean;
   serviceAutoStart: boolean;
+  /** Phase 12: automatically check official GitHub Releases on startup. */
+  updateAutoCheck: boolean;
   updatedAt: string;
 }
 

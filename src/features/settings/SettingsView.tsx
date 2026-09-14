@@ -14,6 +14,8 @@ import {
   setAppAutoStart,
   setServiceAutoStart,
 } from "../../services/settingsManager";
+import { UpdateSection } from "./UpdateSection";
+import { APP_VERSION, APP_MILESTONE } from "../../constants/version";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -30,6 +32,7 @@ export const SettingsView: React.FC = () => {
   const [settings, setSettings] = useState<AppSettings>({
     appAutoStart: false,
     serviceAutoStart: false,
+    updateAutoCheck: true,
     updatedAt: "",
   });
   const [feedback, setFeedback] = useState<ToggleFeedback>({
@@ -258,6 +261,9 @@ export const SettingsView: React.FC = () => {
         </div>
       </section>
 
+      {/* Phase 12: Updates */}
+      <UpdateSection />
+
       {/* Platform Information */}
       <section style={styles.section} className="glass-card">
         <div style={styles.sectionHeader}>
@@ -278,12 +284,16 @@ export const SettingsView: React.FC = () => {
             <span style={styles.infoValue}>KAIRO</span>
           </div>
           <div style={styles.infoItem}>
+            <span style={styles.infoLabel}>App Version</span>
+            <span style={styles.infoValue}>{APP_VERSION}</span>
+          </div>
+          <div style={styles.infoItem}>
             <span style={styles.infoLabel}>Identifier</span>
             <span style={styles.infoValue}>com.kairo.localruntimemanager</span>
           </div>
           <div style={styles.infoItem}>
             <span style={styles.infoLabel}>Current Milestone</span>
-            <span style={styles.infoValue}>Phase 10 (Production Packaging)</span>
+            <span style={styles.infoValue}>{APP_MILESTONE} (Automatic Updates)</span>
           </div>
           <div style={styles.infoItem}>
             <span style={styles.infoLabel}>Tech Stack</span>

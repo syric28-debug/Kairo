@@ -1,0 +1,3 @@
+export const APP_VERSION = "1.0.1";
+export const APP_MILESTONE = "Phase 12";
+export const APP_VERSION_LABEL = `v${APP_VERSION} • ${APP_MILESTONE}`;

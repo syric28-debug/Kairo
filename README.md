@@ -308,7 +308,7 @@ The **`Settings` (⚙)** tab provides full control over application preferences 
 2. **Process Engine Defaults:**
    - **Kill Grace Period (ms):** Timeout duration (default: `5000` ms) before a non-responsive process tree is forcefully terminated.
 3. **Application Information:**
-   - Displays compiled version (`1.0.0`), application identifier (`com.kairo.localruntimemanager`), platform target, and technology stack.
+   - Displays compiled version (`1.0.1`), application identifier (`com.kairo.localruntimemanager`), platform target, and technology stack.
 
 > **Screenshot — Settings View**
 <!-- Screenshot placeholder: docs/screenshots/14-settings.png -->
@@ -395,6 +395,63 @@ To remove KAIRO completely from your Windows system:
 
 > **Screenshot — Windows Uninstall**
 <!-- Screenshot placeholder: docs/screenshots/17-uninstall.png -->
+
+---
+
+## Updating KAIRO
+
+KAIRO includes a built-in, production-safe automatic update system (Phase 12) that
+uses only the **official KAIRO GitHub Releases** channel:
+`https://github.com/syric28-debug/Kairo/releases`
+
+### How Automatic Updates Work
+
+- KAIRO checks the official GitHub Releases channel for a **stable release with a
+  version newer than the installed one** (proper semantic version comparison —
+  `1.2.0` > `1.10.0` is never confused by string ordering).
+- Checks are performed over **HTTPS only**, and every update package is
+  **cryptographically signed** with the KAIRO updater signing key. Packages with an
+  invalid or missing signature are rejected and never executed.
+- The correct architecture is selected automatically: a 64-bit installation always
+  receives the `x64` update and a 32-bit installation always receives the `x86`
+  update.
+- Updates are **never forced**. You choose when — or whether — to install.
+
+### How to Manually Check for Updates
+
+Open **Settings → Updates** and click **Check for Updates**. The section always
+shows the current version and the latest check status.
+
+### What Happens When an Update Is Available
+
+- A small, non-intrusive banner appears: *"KAIRO X.Y.Z is available."* with
+  **Install Update** and **Later** buttons. The banner also appears if KAIRO is
+  reopened from the system tray.
+- The update dialog shows a **release-notes preview** taken from the official
+  GitHub release before you decide.
+- Clicking **Install Update** downloads the verified installer (with progress),
+  cleanly stops any running managed services (by exact PID, preserving KAIRO's
+  normal process-safety model), and launches the signed installer. KAIRO restarts
+  automatically into the new version.
+
+### What Happens If the Update Check Fails
+
+Nothing dramatic. If GitHub is unreachable, the release is missing, metadata is
+invalid, or a download is interrupted, KAIRO **keeps working normally** — the
+Settings section simply reports *"Unable to check for updates."* No popups, no
+retries that block the app, and never a broken half-updated state: the installer
+is only launched after the full package has been downloaded and verified.
+
+### Your Data Is Preserved
+
+Updates replace application binaries only. Your service configurations,
+application settings, user-created services, environment configuration, and
+persistent logs are **not** touched — all data stays in
+`%APPDATA%\com.kairo.localruntimemanager` (existing legacy-migration logic is
+also preserved).
+
+> Release maintainers: see **[docs/UPDATES.md](docs/UPDATES.md)** for the
+> production release process (signing, `latest.json`, architecture assets).
 
 ---
 

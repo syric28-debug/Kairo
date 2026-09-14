@@ -13,6 +13,12 @@ export interface CreateServiceDto {
   autoStart?: boolean;
   autoRestart?: boolean;
   healthCheck?: string | null;
+  /** Optional user-defined API base path (e.g. "/v1"). */
+  apiBasePath?: string | null;
+  /** Optional user-defined direct-link path (e.g. "/"). */
+  directUrlPath?: string | null;
+  /** Optional user-defined health-check path (e.g. "/health"). */
+  healthCheckPath?: string | null;
 }
 
 export interface UpdateServiceDto {
@@ -26,6 +32,12 @@ export interface UpdateServiceDto {
   autoStart?: boolean;
   autoRestart?: boolean;
   healthCheck?: string | null;
+  /** Optional user-defined API base path (e.g. "/v1"). */
+  apiBasePath?: string | null;
+  /** Optional user-defined direct-link path (e.g. "/"). */
+  directUrlPath?: string | null;
+  /** Optional user-defined health-check path (e.g. "/health"). */
+  healthCheckPath?: string | null;
 }
 
 const STORAGE_KEY = "lsm_services_fallback";
@@ -156,6 +168,9 @@ export async function createService(dto: CreateServiceDto): Promise<ServiceConfi
     autoStart: dto.autoStart ?? false,
     autoRestart: dto.autoRestart ?? false,
     healthCheck: dto.healthCheck ?? null,
+    apiBasePath: dto.apiBasePath?.trim() || null,
+    directUrlPath: dto.directUrlPath?.trim() || null,
+    healthCheckPath: dto.healthCheckPath?.trim() || null,
     createdAt: now,
     updatedAt: now,
   };
@@ -200,6 +215,9 @@ export async function updateService(
     autoStart: dto.autoStart ?? false,
     autoRestart: dto.autoRestart ?? false,
     healthCheck: dto.healthCheck ?? null,
+    apiBasePath: dto.apiBasePath?.trim() || null,
+    directUrlPath: dto.directUrlPath?.trim() || null,
+    healthCheckPath: dto.healthCheckPath?.trim() || null,
     updatedAt: new Date().toISOString(),
   };
 

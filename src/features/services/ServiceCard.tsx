@@ -13,6 +13,7 @@ import {
   Terminal,
 } from "lucide-react";
 import { ServiceState } from "../../types";
+import { ServiceEndpointsSection } from "./ServiceEndpointsSection";
 
 interface ServiceCardProps {
   service: ServiceState;
@@ -251,6 +252,12 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({
       </div>
     )}
 
+    {/* Endpoints Section */}
+    <ServiceEndpointsSection
+      config={config}
+      status={status}
+    />
+
     {/* Card Actions Footer */}
     <div style={styles.actionsFooter}>
       <div style={styles.actionLeft}>
@@ -461,5 +468,122 @@ const styles: Record<string, React.CSSProperties> = {
     display: "flex",
     alignItems: "center",
     gap: "8px",
+  },
+  endpointsSection: {
+    border: "1px solid var(--border-subtle)",
+    borderRadius: "var(--radius-sm)",
+    backgroundColor: "rgba(255, 255, 255, 0.02)",
+    padding: "12px 16px",
+    marginTop: "4px",
+  },
+  endpointsHeader: {
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
+    marginBottom: "10px",
+  },
+  endpointsLabel: {
+    fontFamily: "var(--font-mono)",
+    fontSize: "0.6875rem",
+    fontWeight: 600,
+    color: "var(--text-muted)",
+    letterSpacing: "0.08em",
+    textTransform: "uppercase",
+  },
+  endpointBlock: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: "12px",
+    padding: "8px 0",
+    border: "none",
+    backgroundColor: "transparent",
+  },
+  endpointBlockDivider: {
+    borderTop: "1px solid var(--border-subtle)",
+  },
+  endpointUrl: {
+    fontFamily: "var(--font-mono)",
+    fontSize: "0.8125rem",
+    color: "var(--text-primary)",
+    wordBreak: "break-all",
+  },
+  endpointLabel: {
+    fontSize: "0.75rem",
+    color: "var(--text-muted)",
+    marginBottom: "4px",
+    display: "block",
+    fontWeight: "500",
+  },
+  endpointButton: {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "4px",
+    fontSize: "0.75rem",
+    color: "var(--text-secondary)",
+    background: "rgba(255, 255, 255, 0.05)",
+    border: "1px solid var(--border-subtle)",
+    borderRadius: "var(--radius-sm)",
+    padding: "4px 8px",
+    cursor: "pointer",
+  },
+  endpointButtonSuccess: {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "4px",
+    fontSize: "0.75rem",
+    color: "#22c55e",
+    background: "rgba(34, 197, 94, 0.08)",
+    border: "1px solid rgba(34, 197, 94, 0.25)",
+    borderRadius: "var(--radius-sm)",
+    padding: "4px 8px",
+    cursor: "default",
+  },
+  endpointButtonOpen: {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "4px",
+    fontSize: "0.75rem",
+    color: "var(--text-secondary)",
+    background: "transparent",
+    border: "1px solid var(--border-subtle)",
+    borderRadius: "var(--radius-sm)",
+    padding: "4px 8px",
+    cursor: "pointer",
+  },
+  endpointButtonOpenSuccess: {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "4px",
+    fontSize: "0.75rem",
+    color: "#22c55e",
+    background: "rgba(34, 197, 94, 0.08)",
+    border: "1px solid rgba(34, 197, 94, 0.25)",
+    borderRadius: "var(--radius-sm)",
+    padding: "4px 8px",
+    cursor: "default",
+  },
+  endpointStatus: {
+    fontFamily: "var(--font-mono)",
+    fontSize: "0.6875rem",
+    padding: "2px 6px",
+    borderRadius: "var(--radius-xs)",
+    marginLeft: "8px",
+    fontWeight: 500,
+  },
+  endpointStatusReady: {
+    backgroundColor: "rgba(34, 197, 94, 0.12)",
+    color: "#22c55e",
+    border: "1px solid rgba(34, 197, 94, 0.25)",
+  },
+  endpointStatusWaiting: {
+    backgroundColor: "rgba(251, 191, 36, 0.12)",
+    color: "#fbbf24",
+    border: "1px solid rgba(251, 191, 36, 0.25)",
+  },
+  endpointStatusConfigured: {
+    backgroundColor: "rgba(156, 163, 175, 0.12)",
+    color: "var(--text-muted)",
+    border: "1px solid var(--border-subtle)",
   },
 };

@@ -1,9 +1,11 @@
 pub mod log_commands;
 pub mod process_commands;
 pub mod settings_commands;
+pub mod update_commands;
 pub use log_commands::*;
 pub use process_commands::*;
 pub use settings_commands::*;
+pub use update_commands::*;
 
 use std::sync::Arc;
 
@@ -54,6 +56,10 @@ pub fn create_service(
         auto_start: dto.auto_start.unwrap_or(false),
         auto_restart: dto.auto_restart.unwrap_or(false),
         health_check: dto.health_check,
+        kind: dto.kind,
+        api_base_path: dto.api_base_path,
+        direct_url_path: dto.direct_url_path,
+        health_check_path: dto.health_check_path,
         created_at: ts.clone(),
         updated_at: ts,
     };
@@ -79,6 +85,10 @@ pub fn update_service(
         auto_start: dto.auto_start.unwrap_or(false),
         auto_restart: dto.auto_restart.unwrap_or(false),
         health_check: dto.health_check,
+        kind: dto.kind,
+        api_base_path: dto.api_base_path,
+        direct_url_path: dto.direct_url_path,
+        health_check_path: dto.health_check_path,
         created_at: String::new(), // preserved by repository
         updated_at: ts,
     };

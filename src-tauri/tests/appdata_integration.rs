@@ -40,7 +40,14 @@ fn rt_appdata_real_path_integration() {
         auto_start: false,
         auto_restart: false,
         health_check: None,
-        created_at: now.clone(),
+
+        api_base_path: None,
+
+        direct_url_path: None,
+
+        health_check_path: None,
+                    kind: None,
+created_at: now.clone(),
         updated_at: now,
     };
     let created = repo.create(svc).unwrap();

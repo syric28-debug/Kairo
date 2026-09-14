@@ -1,14 +1,15 @@
 {
   "name": "kairo",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "KAIRO — Local Runtime Manager for Windows",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "tauri": "tauri"
+    "tauri": "tauri",
+    "test": "node src/utils/serviceUrl.test.ts && node src/features/updates/updateLogic.test.ts"
   },
   "dependencies": {
     "@tauri-apps/api": "^2.2.0",

@@ -47,7 +47,14 @@ fn phase2_test_config(id: &str) -> ServiceConfig {
         auto_start: false,
         auto_restart: false,
         health_check: None,
-        created_at: JsonServiceRepository::current_timestamp(),
+
+        api_base_path: None,
+
+        direct_url_path: None,
+
+        health_check_path: None,
+                    kind: None,
+created_at: JsonServiceRepository::current_timestamp(),
         updated_at: JsonServiceRepository::current_timestamp(),
     }
 }
@@ -227,7 +234,14 @@ fn rt_06_search_filter_data_integrity() {
         auto_start: false,
         auto_restart: false,
         health_check: None,
-        created_at: JsonServiceRepository::current_timestamp(),
+
+        api_base_path: None,
+
+        direct_url_path: None,
+
+        health_check_path: None,
+                    kind: None,
+created_at: JsonServiceRepository::current_timestamp(),
         updated_at: JsonServiceRepository::current_timestamp(),
     };
     let svc2 = ServiceConfig {
@@ -242,7 +256,14 @@ fn rt_06_search_filter_data_integrity() {
         auto_start: true,
         auto_restart: false,
         health_check: None,
-        created_at: JsonServiceRepository::current_timestamp(),
+
+        api_base_path: None,
+
+        direct_url_path: None,
+
+        health_check_path: None,
+                    kind: None,
+created_at: JsonServiceRepository::current_timestamp(),
         updated_at: JsonServiceRepository::current_timestamp(),
     };
 

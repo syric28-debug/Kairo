@@ -62,3 +62,20 @@ pub fn set_service_auto_start(
     settings.app_auto_start = windows_startup::is_app_auto_start_enabled().unwrap_or(false);
     Ok(settings)
 }
+
+/// Enables or disables automatic update checks on application startup
+/// (Phase 12). Only persists the flag; never performs a network request.
+#[tauri::command]
+pub fn set_update_auto_check(
+    enabled: bool,
+    settings_repo: State<'_, Arc<JsonSettingsRepository>>,
+) -> Result<AppSettings, AppError> {
+    let mut settings = settings_repo.get_settings().unwrap_or_default();
+    settings.update_auto_check = enabled;
+    settings.updated_at = JsonSettingsRepository::current_timestamp();
+    settings_repo.update_settings(&settings)?;
+
+    // Sync appAutoStart from registry before returning.
+    settings.app_auto_start = windows_startup::is_app_auto_start_enabled().unwrap_or(false);
+    Ok(settings)
+}

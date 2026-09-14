@@ -34,7 +34,14 @@ fn make_service_config(id: &str, name: &str, exe: &str, args: Vec<&str>) -> Serv
         auto_start: false,
         auto_restart: false,
         health_check: None,
-        created_at: now.clone(),
+
+        api_base_path: None,
+
+        direct_url_path: None,
+
+        health_check_path: None,
+                    kind: None,
+created_at: now.clone(),
         updated_at: now,
     }
 }

@@ -11,6 +11,7 @@ import {
   HardDrive,
 } from "lucide-react";
 import { ServiceState, NavigationPage } from "../../types";
+import { buildServiceEndpoints } from "../../utils/serviceUrl";
 
 interface DashboardViewProps {
   services: ServiceState[];
@@ -180,8 +181,12 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                     </span>
                   </div>
 
-                  {/* Port */}
-                  <div style={{ flex: 1, fontFamily: "var(--font-mono)", fontSize: "0.75rem", color: "var(--text-secondary)" }}>
+                  {/* Port (title shows the canonical Base URL from the shared
+                      endpoint helper — consistent with the Service Card) */}
+                  <div
+                    style={{ flex: 1, fontFamily: "var(--font-mono)", fontSize: "0.75rem", color: "var(--text-secondary)" }}
+                    title={buildServiceEndpoints(svc.config)?.baseUrl ?? undefined}
+                  >
                     {svc.config.port ? `:${svc.config.port}` : "—"}
                   </div>
 

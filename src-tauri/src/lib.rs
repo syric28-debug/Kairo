@@ -76,7 +76,27 @@ pub fn run() {
                 Arc::clone(&is_exiting_setup),
             )?;
 
-            // 3. Register StartupOrchestrator as Tauri state.
+            // 3. Phase 12: Updater plugin — official GitHub Releases channel.
+            //    Registration failure must never prevent KAIRO from starting;
+            //    the UI degrades to "updates not configured" in that case.
+            match app
+                .handle()
+                .plugin(tauri_plugin_updater::Builder::new().build())
+            {
+                Ok(_) => commands::update_commands::mark_updater_plugin_active(true),
+                Err(e) => {
+                    commands::update_commands::mark_updater_plugin_active(false);
+                    eprintln!("[KAIRO] Updater plugin unavailable: {}", e);
+                }
+            }
+
+            // 3b. Phase 12: Opener plugin — used only to open the official
+            //     GitHub release page from the update UI.
+            if let Err(e) = app.handle().plugin(tauri_plugin_opener::init()) {
+                eprintln!("[KAIRO] Opener plugin unavailable: {}", e);
+            }
+
+            // 4. Register StartupOrchestrator as Tauri state.
             let orchestrator = StartupOrchestrator::new();
             app.manage(orchestrator);
 
@@ -112,6 +132,10 @@ pub fn run() {
             commands::get_service_logs,
             commands::clear_service_logs,
             commands::clear_all_service_logs,
+            // Phase 12 updater commands
+            commands::get_updater_status,
+            commands::restart_app,
+            commands::set_update_auto_check,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

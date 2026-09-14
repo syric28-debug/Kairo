@@ -1,6 +1,6 @@
 [package]
 name = "kairo"
-version = "1.0.0"
+version = "1.0.1"
 description = "KAIRO — Local Runtime Manager for Windows"
 authors = ["KAIRO Team"]
 edition = "2021"
@@ -20,6 +20,8 @@ serde_json = "1"
 thiserror = "2"
 uuid = { version = "1", features = ["v4"] }
 dirs = "6"
+tauri-plugin-updater = "2"
+tauri-plugin-opener = "2"
 
 [target.'cfg(windows)'.dependencies]
 winreg = "0.55"

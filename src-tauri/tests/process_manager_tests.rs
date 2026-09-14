@@ -26,7 +26,14 @@ fn create_test_config(id: &str, name: &str, duration_secs: u32) -> ServiceConfig
         auto_start: false,
         auto_restart: false,
         health_check: None,
-        created_at: "2026-09-09T00:00:00Z".to_string(),
+
+        api_base_path: None,
+
+        direct_url_path: None,
+
+        health_check_path: None,
+                    kind: None,
+created_at: "2026-09-09T00:00:00Z".to_string(),
         updated_at: "2026-09-09T00:00:00Z".to_string(),
     }
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { LayoutDashboard, Server, Terminal, Settings, Layers, Activity } from "lucide-react";
 import { NavigationPage } from "../../types";
+import { APP_VERSION_LABEL } from "../../constants/version";
 
 interface SidebarProps {
   currentPage: NavigationPage;
@@ -95,7 +96,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <span style={styles.statusText}>Engine Ready</span>
         </div>
         <div style={styles.versionContainer}>
-          <span style={styles.versionPill}>v0.1.0 • Phase 1 UI</span>
+          <span style={styles.versionPill}>{APP_VERSION_LABEL}</span>
         </div>
       </div>
     </aside>

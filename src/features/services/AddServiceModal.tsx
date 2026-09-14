@@ -24,6 +24,9 @@ export const AddServiceModal: React.FC<AddServiceModalProps> = ({
   const [port, setPort] = useState<string>("");
   const [envVarsStr, setEnvVarsStr] = useState("");
   const [healthCheck, setHealthCheck] = useState("");
+  const [apiBasePath, setApiBasePath] = useState("");
+  const [directUrlPath, setDirectUrlPath] = useState("");
+  const [healthCheckPath, setHealthCheckPath] = useState("");
   const [autoStart, setAutoStart] = useState(false);
   const [autoRestart, setAutoRestart] = useState(false);
 
@@ -44,6 +47,9 @@ export const AddServiceModal: React.FC<AddServiceModalProps> = ({
           : ""
       );
       setHealthCheck(initialService.config.healthCheck || "");
+      setApiBasePath(initialService.config.apiBasePath || "");
+      setDirectUrlPath(initialService.config.directUrlPath || "");
+      setHealthCheckPath(initialService.config.healthCheckPath || "");
       setAutoStart(initialService.config.autoStart);
       setAutoRestart(initialService.config.autoRestart);
 
@@ -65,6 +71,9 @@ export const AddServiceModal: React.FC<AddServiceModalProps> = ({
       setPort("");
       setEnvVarsStr("");
       setHealthCheck("");
+      setApiBasePath("");
+      setDirectUrlPath("");
+      setHealthCheckPath("");
       setAutoStart(false);
       setAutoRestart(false);
     }
@@ -126,6 +135,9 @@ export const AddServiceModal: React.FC<AddServiceModalProps> = ({
       autoStart,
       autoRestart,
       healthCheck: healthCheck.trim() || null,
+      apiBasePath: apiBasePath.trim() || null,
+      directUrlPath: directUrlPath.trim() || null,
+      healthCheckPath: healthCheckPath.trim() || null,
     };
 
     setIsSubmitting(true);
@@ -312,6 +324,55 @@ export const AddServiceModal: React.FC<AddServiceModalProps> = ({
             />
           </div>
 
+          {/* Endpoints (Optional) */}
+          <div style={styles.endpointsGroup}>
+            <div style={styles.endpointsHeader}>
+              <span style={styles.label}>Endpoints (Optional)</span>
+              <span style={styles.endpointsHint}>
+                Optional paths used to build convenient local URLs from the configured port.
+                KAIRO does not guess API paths.
+              </span>
+            </div>
+            <div style={styles.endpointsGrid}>
+              <div style={styles.fieldGroup}>
+                <label style={styles.label}>API Base Path (Optional)</label>
+                <input
+                  type="text"
+                  className="input-glass"
+                  style={{ fontFamily: "var(--font-mono)" }}
+                  placeholder="/v1"
+                  value={apiBasePath}
+                  maxLength={512}
+                  onChange={(e) => setApiBasePath(e.target.value)}
+                />
+              </div>
+              <div style={styles.fieldGroup}>
+                <label style={styles.label}>Direct URL Path (Optional)</label>
+                <input
+                  type="text"
+                  className="input-glass"
+                  style={{ fontFamily: "var(--font-mono)" }}
+                  placeholder="/chat"
+                  value={directUrlPath}
+                  maxLength={512}
+                  onChange={(e) => setDirectUrlPath(e.target.value)}
+                />
+              </div>
+              <div style={styles.fieldGroup}>
+                <label style={styles.label}>Health Check Path (Optional)</label>
+                <input
+                  type="text"
+                  className="input-glass"
+                  style={{ fontFamily: "var(--font-mono)" }}
+                  placeholder="/health or /ping"
+                  value={healthCheckPath}
+                  maxLength={512}
+                  onChange={(e) => setHealthCheckPath(e.target.value)}
+                />
+              </div>
+            </div>
+          </div>
+
           {/* Checkbox Toggles */}
           <div style={styles.togglesRow}>
             <label style={styles.toggleLabel}>
@@ -486,5 +547,29 @@ const styles: Record<string, React.CSSProperties> = {
     gap: "10px",
     paddingTop: "12px",
     borderTop: "1px solid var(--border-subtle)",
+  },
+  endpointsGroup: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px",
+    padding: "12px 14px",
+    backgroundColor: "rgba(255, 255, 255, 0.02)",
+    border: "1px solid var(--border-subtle)",
+    borderRadius: "var(--radius-sm)",
+  },
+  endpointsHeader: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "4px",
+  },
+  endpointsHint: {
+    fontSize: "0.6875rem",
+    color: "var(--text-muted)",
+    lineHeight: 1.4,
+  },
+  endpointsGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 1fr)",
+    gap: "12px",
   },
 };

@@ -7,6 +7,65 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.1] — First Signed Updater Release
+
+**Release tag:** `v1.0.1`
+
+The first KAIRO release published with signed automatic-update artifacts.
+
+### Added — Automatic Update System (Phase 12)
+
+- **Official GitHub Releases update channel:** KAIRO now checks
+  `https://github.com/syric28-debug/Kairo/releases/latest/download/latest.json`
+  (HTTPS only) for newer stable releases using the official Tauri 2 updater
+  plugin. No third-party update servers, mirrors, or arbitrary download URLs.
+- **Semantic version comparison:** Update availability uses proper semantic
+  ordering (`1.0.0` < `1.1.0` < `1.10.0` < `2.0.0`) — never plain string
+  comparison. Covered by unit tests including malformed-version handling.
+- **Settings → Updates section:** Current version, update status, manual
+  "Check for Updates" button, and an optional "Check for updates on startup"
+  toggle (persisted in `settings.json`, backward compatible via serde default).
+- **Non-intrusive update notification:** A dismissible banner
+  ("KAIRO X.Y.Z is available.") with Install Update / Later actions. Never
+  forced; also visible when reopening KAIRO from the system tray.
+- **Release-notes preview:** The update dialog shows the real release notes
+  from the official GitHub release before installation. If notes cannot be
+  retrieved, only version information is shown.
+- **Signature-verified installation:** Update packages are verified with the
+  configured Tauri updater minisign signature before installation. Unsigned or
+  invalid packages are rejected. No shell execution, no download-and-execute.
+- **Architecture-correct updates:** The running binary's architecture maps to
+  `windows-x86_64` / `windows-i686` platform keys — an x86 installation can
+  never receive an x64 update, and vice versa. Covered by unit tests.
+- **Safe update installation:** Running managed services are stopped through
+  the existing exact-PID-based lifecycle before the update is applied; the NSIS
+  installer runs in passive mode and restarts the new version automatically.
+- **Failure resilience:** Network failures, unreachable GitHub, missing
+  releases, invalid metadata, and interrupted/corrupted downloads all leave
+  KAIRO fully usable with clear status text ("Unable to check for updates.")
+  — no error popups and no broken half-updated states.
+- **Update source validation:** Endpoint validation helpers enforce HTTPS and
+  the official GitHub host; updater state (`get_updater_status`) reports the
+  installed version, platform target, and signing configuration honestly.
+- **Production release process:** Documented in `docs/UPDATES.md` (signing
+  setup, dual-architecture builds with updater artifacts, `latest.json`
+  manifest format, draft → verify → publish workflow).
+
+> Note: `v1.0.1` is the first release that enables automatic updates. The
+> previous `v1.0.0` release predates the updater and contains no `latest.json`
+> or signature files; existing v1.0.0 installations continue to work normally
+> and will be able to update through GitHub Releases once `v1.0.1` is
+> published.
+
+### Security
+
+- Updater configured for HTTPS-only transport to the official GitHub host.
+- Signing public key location prepared in `tauri.conf.json`; production
+  private key handling documented — private keys are never stored in the
+  repository, source, or configuration files.
+
+---
+
 ## [1.0.0] — Initial Release
 
 **Release date:** September 2026

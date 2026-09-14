@@ -19,8 +19,10 @@ import {
   CreateServiceDto,
   UpdateServiceDto,
 } from "./services/serviceManager";
-import { onStartupProgress } from "./services/settingsManager";
+import { onStartupProgress, getStartupSettings } from "./services/settingsManager";
 import { ServiceState, NavigationPage, StartupProgress } from "./types";
+import { UpdateAvailableBanner, UpdateInstallDialog } from "./features/updates/UpdateNotifications";
+import { scheduleStartupUpdateCheck } from "./services/updateStore";
 import "./styles/index.css";
 
 export const App: React.FC = () => {
@@ -43,6 +45,22 @@ export const App: React.FC = () => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [serviceToDelete, setServiceToDelete] = useState<ServiceState | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
+
+  // Phase 12: optional background update check — never blocks startup and
+  // failures are silent (status text only, no popups).
+  useEffect(() => {
+    let cancelled = false;
+    getStartupSettings()
+      .then((settings) => {
+        if (!cancelled) scheduleStartupUpdateCheck(settings.updateAutoCheck ?? true);
+      })
+      .catch(() => {
+        if (!cancelled) scheduleStartupUpdateCheck(true);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   // Load services from repository and reconcile with live process states
   const loadServices = useCallback(async () => {
@@ -447,6 +465,9 @@ export const App: React.FC = () => {
           </div>
         )}
 
+        {/* Phase 12: Update-available banner (non-intrusive, user-controlled) */}
+        <UpdateAvailableBanner />
+
         {/* Dynamic Viewport Container */}
         <main style={styles.mainContent}>
           {isLoading ? (
@@ -494,6 +515,9 @@ export const App: React.FC = () => {
         onSave={handleSaveService}
         initialService={editingService}
       />
+
+      {/* Phase 12: Update install dialog (release notes, progress, install) */}
+      <UpdateInstallDialog />
 
       {/* Delete Confirmation Modal */}
       <DeleteServiceModal

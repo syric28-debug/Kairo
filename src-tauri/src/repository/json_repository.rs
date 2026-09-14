@@ -231,6 +231,10 @@ mod tests {
             auto_start: true,
             auto_restart: false,
             health_check: None,
+            kind: None,
+            api_base_path: None,
+            direct_url_path: None,
+            health_check_path: None,
             created_at: JsonServiceRepository::current_timestamp(),
             updated_at: JsonServiceRepository::current_timestamp(),
         }
