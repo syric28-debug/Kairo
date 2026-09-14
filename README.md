@@ -52,13 +52,13 @@ Choose the installer that matches your Windows system.
 
 ### Windows 64-bit
 
-[Download KAIRO for Windows x64](https://github.com/syric28-debug/Kairo/releases/download/v1.0.0/KAIRO-Setup-1.0.0-x64.exe)
+[Download KAIRO for Windows x64](https://github.com/syric28-debug/Kairo/releases/download/v1.0.1/KAIRO_1.0.1_x64-setup.exe)
 
 For modern 64-bit Windows systems.
 
 ### Windows 32-bit
 
-[Download KAIRO for Windows x86](https://github.com/syric28-debug/Kairo/releases/download/v1.0.0/KAIRO-Setup-1.0.0-x86.exe)
+[Download KAIRO for Windows x86](https://github.com/syric28-debug/Kairo/releases/download/v1.0.1/KAIRO_1.0.1_x86-setup.exe)
 
 For 32-bit Windows systems.
 
@@ -80,8 +80,8 @@ Windows **Settings → System → About → System type**
 Installing KAIRO is fast, lightweight, and requires no administrative privileges:
 
 1. Download the installer matching your architecture:
-   - For 64-bit Windows: `KAIRO-Setup-1.0.0-x64.exe`
-   - For 32-bit Windows: `KAIRO-Setup-1.0.0-x86.exe`
+   - For 64-bit Windows: `KAIRO_1.0.1_x64-setup.exe`
+   - For 32-bit Windows: `KAIRO_1.0.1_x86-setup.exe`
 2. Double-click the `.exe` installer.
 3. The NSIS installer will install KAIRO into your local user directory:  
    `%LOCALAPPDATA%\KAIRO`
