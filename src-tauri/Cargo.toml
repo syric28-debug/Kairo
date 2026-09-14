@@ -1,6 +1,6 @@
 [package]
 name = "kairo"
-version = "1.0.1"
+version = "1.0.2"
 description = "KAIRO — Local Runtime Manager for Windows"
 authors = ["KAIRO Team"]
 edition = "2021"

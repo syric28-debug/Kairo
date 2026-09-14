@@ -1,7 +1,7 @@
 {
   "name": "kairo",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "KAIRO — Local Runtime Manager for Windows",
   "type": "module",
   "scripts": {

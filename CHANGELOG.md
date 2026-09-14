@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.2] — Updater Verification Release
+
+**Release tag:** `v1.0.2`
+
+This is the first KAIRO release intended to verify the automatic updater:
+an installation of `v1.0.1` should detect `v1.0.2` through the official
+GitHub Releases update channel and update automatically.
+
+### Changed
+
+- Application version bumped from `1.0.1` to `1.0.2` across the frontend
+  (`src/constants/version.ts`), Rust backend (`src-tauri/Cargo.toml`), Tauri
+  configuration (`src-tauri/tauri.conf.json`), and package metadata.
+- No functional changes to the Phase 12 automatic-update architecture, signing
+  configuration, or update endpoint.
+
+### Notes
+
+- This release is a verification milestone for the automatic update flow
+  introduced in `v1.0.1`. The updater endpoint remains
+  `https://github.com/syric28-debug/Kairo/releases/latest/download/latest.json`.
+
+---
+
 ## [1.0.1] — First Signed Updater Release
 
 **Release tag:** `v1.0.1`

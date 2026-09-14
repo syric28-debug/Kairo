@@ -308,7 +308,7 @@ The **`Settings` (⚙)** tab provides full control over application preferences 
 2. **Process Engine Defaults:**
    - **Kill Grace Period (ms):** Timeout duration (default: `5000` ms) before a non-responsive process tree is forcefully terminated.
 3. **Application Information:**
-   - Displays compiled version (`1.0.1`), application identifier (`com.kairo.localruntimemanager`), platform target, and technology stack.
+   - Displays compiled version (`1.0.2`), application identifier (`com.kairo.localruntimemanager`), platform target, and technology stack.
 
 > **Screenshot — Settings View**
 <!-- Screenshot placeholder: docs/screenshots/14-settings.png -->
